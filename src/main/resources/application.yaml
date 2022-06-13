@@ -1,0 +1,36 @@
+server:
+  port: 8888
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+springdoc:
+  swagger-ui:
+    csrf:
+      enabled: true
+
+logbook:
+  include:
+    - /rest/api/**
+  filter.enabled: true
+  secure-filter.enabled: true
+  format.style: json
+  strategy: body-only-if-status-at-least
+  minimum-status: 400
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Secret
+    parameters:
+      - access_token
+      - password
+  write:
+    chunk-size: 1000
+
+logging.level.org.zalando.logbook: TRACE
