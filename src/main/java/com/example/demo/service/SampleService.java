@@ -9,6 +9,5 @@ import org.springframework.stereotype.Service;
 public class SampleService {
     public void submit(Sample sample) {
         log.info("Sample received: {}", sample);
-        throw new RuntimeException("Hey Dude! some error");
     }
 }
